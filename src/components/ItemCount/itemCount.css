@@ -1,0 +1,24 @@
+.contenedorContador {
+    background-color: rgb(206, 197, 197);
+    height: 200px;
+}
+
+.alMedio {
+    text-align: center;
+}
+
+.contenedores {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.flexContador {
+    width: 200px;
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-between;
+    align-content: center;
+}
