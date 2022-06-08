@@ -10,7 +10,7 @@ function ItemCount(props) {
     }
 
     function restar(){
-        if (count > 0) {
+        if (count > 1) {
             modificarCont(count - 1)
         }
     }
