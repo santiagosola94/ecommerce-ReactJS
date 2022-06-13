@@ -3,7 +3,8 @@ import {Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 
 function Item({producto}) {
-    const {nombre, img, descripcion, stock, precio} = producto;
+    const {nombre, img, descripcion, stock, precio, id} = producto;
+
 return (
             <>
                 <Card style={{ width: '18rem' }}>
@@ -19,7 +20,7 @@ return (
                         <ListGroupItem>Precio: ${precio}</ListGroupItem>
                     </ListGroup>
                     <Card.Body>
-                        <Button variant="danger">Agregar Al Carrito</Button>
+                        <Button>Ver Detalles</Button>
                     </Card.Body>
                 </Card>
             </>

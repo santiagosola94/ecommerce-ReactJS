@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
+import { Button } from 'react-bootstrap'
 
 function ItemCount(props) {
-    const {stock, valorInicial} = props
+    const {stock, valorInicial, nombreDelProducto} = props
     const [ count, modificarCont ] = useState(parseInt(valorInicial))
     function sumar() {
         if (count < stock) {
@@ -16,18 +17,14 @@ function ItemCount(props) {
     }
 
     function onAdd(){
-        console.log('el valor elegido es:', count)
+        console.log('Agregaste', count, nombreDelProducto)
     }
 
     return (
         <>
             <div className='contenedorContador'>
-                <div className='alMedio'>
-                    <h3>Producto 1</h3>
-                    <p>Stock: {stock}</p>
-                </div>
-                
                 <div className='contenedores'>
+                    <h5 className='colorTitulo'>Cantidad</h5>
                     <div className='flexContador'>
                         <button onClick={restar}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className='bi bi-arrow-left-circle' viewBox="0 0 16 16">
@@ -41,7 +38,7 @@ function ItemCount(props) {
                             </svg>
                         </button>
                     </div>
-                    <button onClick={onAdd}>Agregar al Carrito</button>
+                    <Button variant="danger" onClick={onAdd}>Agregar al Carrito</Button>
                 </div>
             </div>
         </>

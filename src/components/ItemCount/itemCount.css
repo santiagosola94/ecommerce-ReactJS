@@ -1,6 +1,6 @@
 .contenedorContador {
-    background-color: rgb(206, 197, 197);
-    height: 200px;
+    background-color: rgba(5, 5, 5, 0.781);
+    padding: 10px;
 }
 
 .alMedio {
@@ -16,9 +16,14 @@
 
 .flexContador {
     width: 200px;
+    margin: 10px;
     background-color: whitesmoke;
     display: flex;
     flex-direction: wrap;
     justify-content: space-between;
     align-content: center;
+}
+
+.colorTitulo{
+    color: white;
 }
