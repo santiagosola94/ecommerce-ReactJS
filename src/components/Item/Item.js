@@ -2,7 +2,8 @@ import React from 'react'
 import {Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
 
 
-function Item({nombre, img, descripcion, stock, precio}) {
+function Item({producto}) {
+    const {nombre, img, descripcion, stock, precio} = producto;
 return (
             <>
                 <Card style={{ width: '18rem' }}>
