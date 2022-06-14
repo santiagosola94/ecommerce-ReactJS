@@ -22,11 +22,12 @@ const detalleProductos = [
 
 
 
-const FetchDetallesProductos = new Promise((resolve, reject) => {
+const FetchDetallesProductos = (id) =>{ 
+    return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve(detalleProductos)
-            }, 3000)
-        })
-
+            resolve(detalleProductos.find((product)=> product.id === id))
+            }, 3000);
+        });
+    }
 
 export default FetchDetallesProductos

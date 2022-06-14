@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import FetchDetallesProductos from '../../helpers/detalleProductos'
-import ItemCount from '../ItemCount/ItemCount'
 import ItemDetail from '../ItemDetail/ItemDetail'
 
 
@@ -8,9 +7,12 @@ const ItemDetailContainer = () => {
 
     const [detail, setDetails] = useState([])
     const [esperar, setEsperar] = useState(true)
+    
+    /* Esta constante ID la hice para que declare un numero aleatorio y me lo muestre despues en pantalla*/
+    const id = Math.floor(Math.random() * 2)+1
 
     useEffect(() => {
-        FetchDetallesProductos
+        FetchDetallesProductos(id)
         .then((resp) =>{
             setDetails(resp)
         })
@@ -25,9 +27,9 @@ const ItemDetailContainer = () => {
         {
             esperar ? ( <h1> Cargando Descripcion ...</h1>) 
             : ( <div>
-                    {detail.map((detallesDelProducto) => (
-                        <ItemDetail key={detallesDelProducto.id} detallesDelProducto={detallesDelProducto} />
-                    ))}
+                    {
+                        <ItemDetail key={detail.id} detallesDelProducto={detail} />
+                    }
                 </div>
             )
         }
