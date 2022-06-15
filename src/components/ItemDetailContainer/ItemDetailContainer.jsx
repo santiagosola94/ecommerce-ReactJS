@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import FetchDetallesProductos from '../../helpers/detalleProductos'
 import ItemDetail from '../ItemDetail/ItemDetail'
+import { useParams } from 'react-router-dom'
 
 
 const ItemDetailContainer = () => {
@@ -8,8 +9,9 @@ const ItemDetailContainer = () => {
     const [detail, setDetails] = useState([])
     const [esperar, setEsperar] = useState(true)
     
+    const { id } = useParams()
     /* Esta constante ID la hice para que declare un numero aleatorio y me lo muestre despues en pantalla*/
-    const id = Math.floor(Math.random() * 2)+1
+    
 
     useEffect(() => {
         FetchDetallesProductos(id)

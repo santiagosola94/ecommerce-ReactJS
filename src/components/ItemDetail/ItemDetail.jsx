@@ -3,14 +3,17 @@ import { Col, Container, Row } from 'react-bootstrap'
 import ItemCount from '../ItemCount/ItemCount'
 import './ItemDetail.css'
 
+
 const ItemDetail = ({detallesDelProducto}) => {
-    const {detalles, precio, img, stock, nombre, descripcion} = detallesDelProducto
+    const {detalles, precio, img, stock, nombre, categoria} = detallesDelProducto
+
+
 
     return (
         <Container className="estilosContainer">
             <Row className="estilosItemDetail">
                 <Col>
-                    <img src={img} />
+                    <img src={img} alt={nombre} />
                 </Col>
                 <Col>
                     <h4 className="alMedio">{nombre}</h4>

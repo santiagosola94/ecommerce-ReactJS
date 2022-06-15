@@ -1,9 +1,10 @@
 import React from 'react'
 import {Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
-
+import { Link } from 'react-router-dom'
 
 function Item({producto}) {
-    const {nombre, img, descripcion, stock, precio, id} = producto;
+    const {nombre, img, descripcion, stock, precio,id} = producto;
+
 
 return (
             <>
@@ -20,7 +21,9 @@ return (
                         <ListGroupItem>Precio: ${precio}</ListGroupItem>
                     </ListGroup>
                     <Card.Body>
-                        <Button>Ver Detalles</Button>
+                        <Link to={`/detalles/${id}`}>
+                            <Button>Ver Detalles</Button>
+                        </Link>
                     </Card.Body>
                 </Card>
             </>
