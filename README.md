@@ -1,3 +1,22 @@
+
+Este proyecto consiste en un ecommerce enfocado en la venta de ropa deportiva... Camisetas, botines, Conjuntos deportivos, etc. La idea principal es que el usuario tenga una perfecta experiencia de usuario, y que lo que vea, sea algo agradable y que conlleve a que, éste, decida comprar uno o varios productos.
+Es indispensable que el sitio funcione correctamente y sea facilmente navegable.
+La idea es no llenar al usuario de informacion, sino que unicamente, reciba la informacion necesaria para poder navegar y comprar determinados productos.
+
+
+Lo que este proyecto tiene incorporado por ahora es: npm, react-bootstrap y react-router-dom.
+Cabe destacar que no he incluido otras dependencias que no hayamos visto en clase.
+
+Gracias por leer. 
+Atte. Santiago Sola
+
+
+
+
+
+
+/**************************************************************************************************/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

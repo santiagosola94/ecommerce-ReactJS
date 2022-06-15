@@ -13,7 +13,7 @@ const ItemDetail = ({detallesDelProducto}) => {
         <Container className="estilosContainer">
             <Row className="estilosItemDetail">
                 <Col>
-                    <img src={img} alt={nombre} />
+                    <img src={img} alt={nombre} className="imagenes"/>
                 </Col>
                 <Col>
                     <h4 className="alMedio">{nombre}</h4>
