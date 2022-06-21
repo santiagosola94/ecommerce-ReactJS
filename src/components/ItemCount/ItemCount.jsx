@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 
 function ItemCount(props) {
-    const {stock, valorInicial, nombreDelProducto} = props
+    const {stock, valorInicial, nombreDelProducto, onAdd} = props
     const [ count, modificarCont ] = useState(parseInt(valorInicial))
     function sumar() {
         if (count < stock) {
@@ -16,8 +16,8 @@ function ItemCount(props) {
         }
     }
 
-    function onAdd(){
-        console.log('Agregaste', count, nombreDelProducto)
+    function agregar(){
+        onAdd(count)
     }
 
     return (
@@ -38,7 +38,7 @@ function ItemCount(props) {
                             </svg>
                         </button>
                     </div>
-                    <Button variant="danger" onClick={onAdd}>Agregar al Carrito</Button>
+                    <Button variant="danger" onClick={agregar}>Agregar al Carrito</Button>
                 </div>
             </div>
         </>
