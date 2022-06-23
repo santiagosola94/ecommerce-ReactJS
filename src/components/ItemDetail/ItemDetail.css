@@ -21,7 +21,46 @@
     width: 100%;
 }
 
-.test {
+.flexBotonesCart {
     display: flex;
+    justify-content: space-evenly;
+    
+}
+
+.estilosImagen {
+    height: 100px;
+    width: 100px;
+}
+
+.estilosBackgroundFondo {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    background-image: url(https://i.ibb.co/Ltcj5Br/4621939-min.jpg);
+    background-attachment: fixed;
+    height: 100vh;
+}
+.colorThead{
+    background-color: rgba(209, 203, 203, 0.815);
+}
+.colorTbody{
+
+    background-color: rgba(0, 0, 0, 0.87);
+}
+.colorLetra{
+    color: white;
+}
+.prueba{
+    justify-content:center;
+    align-items:center;
+}
+.estiloTabla{
+    box-sizing: content-box;
+    width: 80%;
+    align-self: center;
+}
+
+.estilosBoton{
+    width: 20%;
+    align-self: center;
 }

@@ -2,6 +2,7 @@ import React from 'react'
 import {Card, Button, ListGroup, ListGroupItem} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 
+
 function Item({producto}) {
     const {nombre, img, descripcion, stock, precio,id} = producto;
 
