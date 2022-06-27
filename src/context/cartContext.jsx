@@ -23,7 +23,7 @@ export const CartContextProvider = ({ children }) =>{
     un nuevo render.*/
 
     const eliminarProducto = (id, e)=>{
-        const productoEncontrado = carrito.find((p)=> p.id == id )
+        const productoEncontrado = carrito.find((p)=> p.id === id )
         console.log(productoEncontrado)
         const indiceProductoEncontrado = carrito.indexOf(productoEncontrado)
         console.log(indiceProductoEncontrado)
@@ -45,10 +45,8 @@ export const CartContextProvider = ({ children }) =>{
     restara los productos y dejara la cantidad que habia seleccionado por primera vez, modificando el estado y 
     generando un nuevo render.*/
     const verificarCantidadDelProducto = (item) => {
-        const productoEncontrado = carrito.find((p)=> p.id == item.id )
-        console.log(productoEncontrado)
+        const productoEncontrado = carrito.find((p)=> p.id === item.id )
         const indiceProductoEncontrado = carrito.indexOf(productoEncontrado)
-        console.log(indiceProductoEncontrado)
             carrito[indiceProductoEncontrado].cantidad += item.cantidad
             if (carrito[indiceProductoEncontrado].cantidad <= carrito[indiceProductoEncontrado].stock){
                 setCarrito([...carrito])

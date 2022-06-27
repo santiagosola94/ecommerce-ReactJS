@@ -9,7 +9,7 @@ function ItemListContainer(prop) {
     const [productos, setProductos]= useState([]);
     const [cargando, setCargando] = useState(true);
     const { categoria } = useParams()
-    console.log(categoria)
+
 
     useEffect(() =>{
         getFetch(categoria)
