@@ -7,7 +7,12 @@ import '../ItemDetail/ItemDetail.css'
 
 export const Cart = () => {
     const {carrito, vaciarContenido, eliminarProducto} = useContext(CartContext)
-    console.log(carrito)
+
+    const determinarPrecioFinal = ()=> {
+        const final = carrito.reduce((acc, elemento) => acc + elemento.precioTotal, 0);
+        return final
+    }
+
     return (
         <div className="estilosBackgroundFondo">
             {carrito.length === 0 ? 
@@ -22,29 +27,44 @@ export const Cart = () => {
                 <table className="estiloTabla">
                     <thead className="colorThead alMedio">
                         <tr>
-                            <th>ID</th>
+                            <th>#</th>
                             <th>Imagen</th>
                             <th>Producto</th>
                             <th>Cantidad</th>
-                            <th>Precio</th>
+                            <th>Precio Unitario</th>
+                            <th>Precio Total</th>
                             <th>Remover Producto</th>
                         </tr>
                     </thead>
-                    <tbody className="alMedio colorTbody prueba">
+                    <tbody className="alMedio colorTbody">
                         {carrito.map((item) => 
                             <tr key={item.id} className="colorLetra">
-                                <td>{item.id}</td>
+                                <td className="widthTh">{carrito.indexOf(item)}</td>
                                 <td><img src={item.img} className="estilosImagen"></img></td>
                                 <td>{item.nombre}</td>
                                 <td>{item.cantidad}</td>
-                                <td>{item.precio}</td>
-                                <td><button key={item.id} onClick={(e) => eliminarProducto(item.id, e)}>Eliminar</button></td>
+                                <td>${item.precio}</td>
+                                <td>${item.precioTotal}</td>
+                                <td><button key={item.id} onClick={(e) => eliminarProducto(item.id, e)} className="btn btn-danger">Eliminar</button></td>
                             </tr>
                         )}
                     </tbody>
+                    <tfoot className="colorThead alMedio">
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th>Precio Final:</th>
+                            <th>${determinarPrecioFinal()}</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
                 </table>
-                <button onClick={vaciarContenido} className="btn btn-primary alMedio estilosBoton">Vaciar contenido Carrito</button>
-                
+                <div className="flexDivBotonesCarrito">
+                    <button onClick={vaciarContenido} className="btn btn-primary alMedio estilosBoton">Vaciar contenido Carrito</button>
+                    <button className="btn btn-warning alMedio estilosBoton">Pagar</button>
+                </div>
             </>
             }
         </div>

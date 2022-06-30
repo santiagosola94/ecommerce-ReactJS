@@ -14,8 +14,10 @@ const ItemDetail = ({detallesDelProducto}) => {
 
     const [cantidad, setCantidad] = useState()
 
+
     const onAdd = (cant) => {
-        addToCart({...detallesDelProducto, cantidad:cant})
+        const precioTotal = detallesDelProducto.precio * cant
+        addToCart({...detallesDelProducto, cantidad:cant, precioTotal: precioTotal})
         setCantidad(cant)
     }
 

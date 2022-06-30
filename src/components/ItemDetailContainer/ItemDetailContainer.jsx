@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import FetchDetallesProductos from '../../helpers/detalleProductos'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import { useParams } from 'react-router-dom'
+import { doc, getDoc, getFirestore } from 'firebase/firestore'
 
 
 const ItemDetailContainer = () => {
@@ -10,19 +10,17 @@ const ItemDetailContainer = () => {
     const [esperar, setEsperar] = useState(true)
     
     const { id } = useParams()
-    /* Esta constante ID la hice para que declare un numero aleatorio y me lo muestre despues en pantalla*/
-    
 
+    
     useEffect(() => {
-        FetchDetallesProductos(id)
-        .then((resp) =>{
-            setDetails(resp)
-        })
-        .catch((err) => console.log(err))
-        .finally(()=>{
-            setEsperar(false)
-        })
+        const db = getFirestore()
+        const manejar = doc(db, 'productos', id)
+        getDoc(manejar)
+            .then(resp => setDetails({id: resp.id, ...resp.data()}))
+            .catch(err => console.error(err))
+            .finally(() => setEsperar(false))
     }, [])
+
 
     return (
         <>

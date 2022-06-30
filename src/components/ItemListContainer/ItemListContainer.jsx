@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import ItemList from "../ItemList/ItemList"
 import './estilosTitulo.css'
-import getFetch from "../../helpers/getFetch"
+
 import { useParams } from 'react-router-dom'
+import {collection, getDocs, getFirestore, query, where, orderBy} from 'firebase/firestore'
 
 
 function ItemListContainer(prop) {
@@ -10,20 +11,35 @@ function ItemListContainer(prop) {
     const [cargando, setCargando] = useState(true);
     const { categoria } = useParams()
 
+    useEffect(() => {
+        const db = getFirestore();
+        const queryCollection = collection(db, 'productos')
+        const queryCollectionOrdenado = query(queryCollection, orderBy('descripcion', 'asc'))
 
-    useEffect(() =>{
-        getFetch(categoria)
-            .then((resp)=>{
-                setProductos(resp);
-        })
-            .catch((err)=>console.log(err))
-            .finally(()=> {
-                setCargando(false)
-            });
-        return () => {
+        
+        if (categoria) {
+            const queryCollectionFilter = query(queryCollection, where('categoria', '==', categoria))
+            getDocs(queryCollectionFilter)
+                .then(resp => setProductos(resp.docs.map((item)=>(
+                    {id: item.id, ...item.data()})
+                )))
+                .catch(err => {console.log(err)})
+                .finally(setCargando(false))
+        } else {
+            getDocs(queryCollectionOrdenado)
+                .then(resp => setProductos(resp.docs.map((item)=>(
+                    {id: item.id, ...item.data()})
+                )))
+                .catch(err => {console.log(err)})
+                .finally(setCargando(false))
+        }
+        return () =>{
             setCargando(true)
         }
+
     }, [categoria])
+    
+    
 
     const {greeting} = prop
 

@@ -50,9 +50,8 @@
 .colorLetra{
     color: white;
 }
-.prueba{
-    justify-content:center;
-    align-items:center;
+.widthTh{
+    width: 5%;
 }
 .estiloTabla{
     box-sizing: content-box;
@@ -74,4 +73,10 @@
     align-items: center;
     width: auto;
     margin: 0px 5%;
+}
+
+.flexDivBotonesCarrito {
+    display: flex;
+    justify-content: space-evenly;
+    margin : 10px 0px;
 }
