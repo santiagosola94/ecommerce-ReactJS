@@ -16,16 +16,12 @@ function NavBar() {
                 <NavLink to='/carrito' className={({ isActive }) => isActive ? 'activa3' : 'coloresDeLetra' }>Carrito</NavLink>
                 
                 <NavDropdown className='coloresDeLetra' title="Productos" id="basic-nav-dropdown">
-                    <NavLink to='/categoria/camisetas'>
-                        <NavDropdown.Item href="#action/3.1">Camisetas</NavDropdown.Item>
-                    </NavLink>
-                    <NavLink to='/categoria/botines'>
-                        <NavDropdown.Item href="#action/3.2">Botines</NavDropdown.Item>
-                    </NavLink>
-                    <NavDropdown.Divider />
-                    <NavLink to='/categoria/ropadeportiva'>
-                        <NavDropdown.Item href="#action/3.3">Ropa Deportiva</NavDropdown.Item>
-                    </NavLink>
+
+                    <NavDropdown.Item as={NavLink} to='/categoria/camisetas'>Camisetas</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to='/categoria/botines'>Botines</NavDropdown.Item>
+                    <NavDropdown.Item as={NavLink} to='/categoria/ropadeportiva'>Ropa Deportiva</NavDropdown.Item>
+
+
                 </NavDropdown>
                 
             </Nav>

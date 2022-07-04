@@ -35,7 +35,7 @@ const ItemDetail = ({detallesDelProducto}) => {
                         {detalles}
                     </p>
                     <h5 className="alMedio">Precio: ${precio}</h5>
-                    <h5 className="alMedio">Stock Disponible: {stock}</h5>
+                    {stock === 0 ? <h5 className="alMedio">No hay stock disponible</h5> : <h5 className="alMedio">Stock Disponible: {stock}</h5> }
 
                     <div>
                         { cantidad ?

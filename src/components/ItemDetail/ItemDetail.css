@@ -80,3 +80,14 @@
     justify-content: space-evenly;
     margin : 10px 0px;
 }
+
+.divIdTransaccion {
+    background-color:rgba(77, 74, 74, 0.726);
+    color: white;
+    width: auto;
+    margin: 10px 5%;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
