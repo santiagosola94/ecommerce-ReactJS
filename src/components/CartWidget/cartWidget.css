@@ -11,14 +11,17 @@
     width: 90px;
 }
 
-.hola{
-    text-align: center;
-    font-size: x-large;
-    margin: 0px;
+.estilosDivCartWidget {
+    position: relative;
 }
-.chau {
+.estilosCartWidgetCount {
+    position: absolute;
+    bottom: 10px;
+    left: 21px;
+    background-color: #dc3545;
+    border-radius: 40px;
+    min-width: 20px;
     text-align: center;
-    font-size: x-large;
-    margin: 0px;
+    pointer-events: none;
 }
 
