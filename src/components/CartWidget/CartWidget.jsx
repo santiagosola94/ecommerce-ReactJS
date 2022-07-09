@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCartShopping, faLayerGroup, faEnvelope, faLayerGroupCount } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { useContext } from "react"
 import { Link } from "react-router-dom"
 import { CartContext } from "../../context/cartContext"
@@ -20,8 +20,9 @@ function CartWidget() {
         <div className="cartWidgetFlex">
             <div className='estilosDivCartWidget'>
                 <Link to="./carrito">
-                    <FontAwesomeIcon icon={faCartShopping} inverse  />            
+                    <FontAwesomeIcon icon={faCartShopping} size='lg' inverse className='iconoLogIn'/>            
                 </Link>
+                <p className="estilosTextoIconoCarrito">Carrito</p>
                 <span className="estilosCartWidgetCount">{MostrarCantidadCarrito() > 0 ? MostrarCantidadCarrito() : '' }</span>
             </div>
         </div>

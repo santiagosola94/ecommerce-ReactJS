@@ -1,0 +1,8 @@
+.probandoEstilos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    height: 100%;
+}

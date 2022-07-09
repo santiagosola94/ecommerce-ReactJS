@@ -1,4 +1,21 @@
-.estilosTitulo {
-    background-color: salmon;
+.estilosFondoBody {
     text-align: center;
+    background-image: url(https://i.ibb.co/311C3wN/origen-del-futbol.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+}
+
+.estilosTitulo{
+    text-align: center;
+    color: white;
+}
+
+.estilosCargando {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 70vh;
 }

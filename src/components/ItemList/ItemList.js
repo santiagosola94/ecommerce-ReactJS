@@ -1,14 +1,15 @@
 import { Row } from 'react-bootstrap'
 import Item from '../Item/Item'
+import './test.css'
 
 function ItemList({ productos }) {
     return (
         <div>
-            <Row className="justify-content-md-center m-0">
+            <div className="justify-content-md-center m-0 probandoEstilos">
                 { productos.map((producto) => (
                     <Item key={producto.id} producto={producto} /> 
                 ))}
-            </Row>
+            </div>
         </div>
     );
 }

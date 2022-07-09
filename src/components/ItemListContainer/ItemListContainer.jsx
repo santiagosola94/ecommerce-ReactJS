@@ -31,7 +31,9 @@ function ItemListContainer(prop) {
                     {id: item.id, ...item.data()})
                 )))
                 .catch(err => {console.log(err)})
-                .finally(setCargando(false))
+                .finally(setTimeout(() => {
+                    setCargando(false)
+                }, 3000))
         }
         return () =>{
             setCargando(true)
@@ -45,13 +47,13 @@ function ItemListContainer(prop) {
 
     return (
         <>
-            <div className="estilosTitulo">
-                <h1>{greeting}</h1>
+            <div className="estilosFondoBody">
+                <h1 className="estilosTitulo">{greeting}</h1>
                     {cargando ? (
-                        <>
+                        <div className="estilosCargando">
                             <h4>Cargando ... </h4>
                             <img src="https://i.pinimg.com/originals/27/73/4d/27734d6d3a94944fc6145e40cc06dfc3.jpg" alt='cargando'/>
-                        </>
+                        </div>
                     ) : (
                         <ItemList productos={ productos } />
                     )}

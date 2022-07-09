@@ -13,15 +13,30 @@
 
 .estilosDivCartWidget {
     position: relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
 }
 .estilosCartWidgetCount {
     position: absolute;
-    bottom: 10px;
-    left: 21px;
+    bottom: 13px;
+    left: 23px;
     background-color: #dc3545;
-    border-radius: 40px;
+    border-radius: 50%;
     min-width: 20px;
     text-align: center;
     pointer-events: none;
 }
 
+.iconoLogIn{
+    cursor: pointer;
+}
+.iconoLogIn:hover{
+    color: red;
+}
+
+.estilosTextoIconoCarrito {
+    margin: 0px;
+    cursor: default;
+}

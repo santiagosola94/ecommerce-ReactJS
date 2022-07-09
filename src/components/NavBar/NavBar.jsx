@@ -3,6 +3,7 @@ import {Navbar, Container, Nav, NavDropdown} from 'react-bootstrap'
 import CartWidget from '../CartWidget/CartWidget'
 import {NavLink} from 'react-router-dom'
 import './navBar.css'
+import LoginWidget from '../LoginWidget/LoginWidget'
 
 function NavBar() {
     return (
@@ -26,6 +27,7 @@ function NavBar() {
                 
             </Nav>
 
+            <LoginWidget />
             <CartWidget />
 
             </Navbar.Collapse>
