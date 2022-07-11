@@ -6,7 +6,7 @@ import './formularioRegistro.css'
 export const FormularioRegistro = () => {
     const [provincias, setProvincias] = useState([])
     const [localidades, setLocalidades] = useState([])
-
+    const [cuentaCreada, setCuentaCreada] = useState('')
 
     const [formulario, setFormulario] = useState({})
 
@@ -46,11 +46,10 @@ export const FormularioRegistro = () => {
 
     const registrar = (e) => {
         e.preventDefault()
-
         const db = getFirestore()
         const crearUsuario = collection(db, 'users')
         addDoc(crearUsuario, formulario)
-
+        .then(()=> setCuentaCreada(true))
     }
     
 
@@ -59,46 +58,53 @@ export const FormularioRegistro = () => {
         <>
             <div>
                 <div className="formularioContenedor">
-                    <form className="formularioEstilos">
+                    {cuentaCreada ? <h4>La cuenta ha sido creada con Exito. Por favor, ingrese con su usuario y contraseña!</h4>
+                    : 
+                    
+                    <div>
                         <h3>Datos Personales</h3>
-
-                        <label htmlFor="nombre">Nombre</label>
-                        <input type="text" id="nombre" name="nombre" onChange={onChangeHandler} defaultValue={formulario.nombre}/>
+                        <form className="formularioEstilos" onSubmit={registrar}>
+                            <label htmlFor="nombreUsuario">Nombre de Usuario</label>
+                            <input type="text" id="nombreUsuario" name="nombreDeUsuario" required onChange={onChangeHandler} defaultValue={formulario.nombreDeUsuario}/>
+                            
+                            <label htmlFor="contrasena">Contraseña</label>
+                            <input type="password" id="contrasena" name="contrasena" required onChange={onChangeHandler} defaultValue={formulario.contrasena}/>
+                            
+                            <label htmlFor="nombre">Nombre</label>
+                            <input type="text" id="nombre" name="nombre" required onChange={onChangeHandler} defaultValue={formulario.nombre}/>
                         
-                        <label htmlFor="apellido">Apellido</label>
-                        <input type="text" id="nombre" name="apellido" onChange={onChangeHandler} defaultValue={formulario.apellido}/>
+                            <label htmlFor="apellido">Apellido</label>
+                            <input type="text" id="nombre" name="apellido" required onChange={onChangeHandler} defaultValue={formulario.apellido}/>
                         
-                        <label htmlFor="email">E-Mail</label>
-                        <input type="email" id="email" name="email" onChange={onChangeHandler} defaultValue={formulario.email}/>
+                            <label htmlFor="email">E-Mail</label>
+                            <input type="email" id="email" name="email" required onChange={onChangeHandler} defaultValue={formulario.email}/>
                         
-
-                        <label htmlFor="dni">DNI</label>
-                        <input type="text" name="dni" id="dni" onChange={onChangeHandler} defaultValue={formulario.dni} />
-
-
-                        <label htmlFor="provincia">Provincia</label>
-                            <select name="provincia" defaultValue={formulario.provinciaElegida} onChange={onChangeHandler}>
-                                <option value="vacio">-</option>
-                                {provincias.map(item => 
-                                    <option key={item.id} value={item.nombre}>{item.nombre}</option>
-                                )}
-                            </select>
+                            <label htmlFor="dni">DNI</label>
+                            <input type="number" name="dni" id="dni" required onChange={onChangeHandler} defaultValue={formulario.dni} />
+                            <label htmlFor="provincia">Provincia</label>
+                                <select name="provincia" required defaultValue={formulario.provinciaElegida} onChange={onChangeHandler}>
+                                    <option value="vacio">-</option>
+                                    {provincias.map(item =>
+                                        <option key={item.id} value={item.nombre}>{item.nombre}</option>
+                                    )}
+                                </select>
                         
-                        <label htmlFor="localidad">Localidad</label>
-                            <select name="localidad" defaultValue={formulario.localidadElegida} onChange={onChangeHandler}>
-                                {localidades.filter((localidadesDeLaProvincia)=>{
-                                    return localidadesDeLaProvincia.provincia.nombre === formulario.provincia
-                                }).sort().map(item => 
-                                    <option key={item.id} value={item.nombre}>{item.nombre}</option>)}
-                            </select>
+                            <label htmlFor="localidad">Localidad</label>
+                                <select name="localidad" required defaultValue={formulario.localidadElegida} onChange={onChangeHandler}>
+                                    {localidades.filter((localidadesDeLaProvincia)=>{
+                                        return localidadesDeLaProvincia.provincia.nombre === formulario.provincia
+                                    }).sort().map(item =>
+                                        <option key={item.id} value={item.nombre}>{item.nombre}</option>)}
+                                </select>
+                            <label htmlFor="direccion">Direccion</label>
+                            <input type="text" required name="direccion" id="direccion"
+                                onChange={onChangeHandler}
+                                defaultValue={formulario.direccion}/>
+                            <input type="submit" value="Enviar"></input>
+                        </form>
+                    </div>
+                    }
 
-                        <label htmlFor="direccion">Direccion</label>
-                        <input type="text" name="direccion" id="direccion" 
-                            onChange={onChangeHandler} 
-                            defaultValue={formulario.direccion}/>
-
-                        <input type="button" value="Enviar" onClick={registrar}></input>
-                    </form>
                 </div>
             </div>
         </>
