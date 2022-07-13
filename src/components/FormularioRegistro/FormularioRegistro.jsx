@@ -1,3 +1,4 @@
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
 import React from 'react'
 import { useState, useEffect } from 'react'
@@ -10,6 +11,21 @@ export const FormularioRegistro = () => {
 
     const [formulario, setFormulario] = useState({})
 
+    const crearNuevaCuenta = async ()=> {
+        const auth = getAuth();
+        await createUserWithEmailAndPassword(auth, formulario.email, formulario.contrasena)
+        .then((userCredential) => {
+            // Signed in
+            const user = userCredential.user;
+            console.log('El usuario ha sido creado correctamente', user)
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+            console.log(errorCode, errorMessage)
+        });
+    }
+
 
     const onChangeHandler = (e)=>{
         setFormulario({...formulario, [e.target.name]: e.target.value})
@@ -19,7 +35,7 @@ export const FormularioRegistro = () => {
         fetch('./provincias/provincias.json')
             .then(resp => resp.json())
             .then(data => setProvincias(data.provincias.sort(((a, b) => {
-                if (a.nombre == b.nombre) {
+                if (a.nombre === b.nombre) {
                     return 0;
                 }
                 if (a.nombre < b.nombre) {
@@ -32,7 +48,7 @@ export const FormularioRegistro = () => {
         fetch('./localidades/localidadesActualizado.json')
             .then(resp => resp.json())
             .then(data => setLocalidades(data.localidades.sort(((a, b) => {
-                if (a.nombre == b.nombre) {
+                if (a.nombre === b.nombre) {
                     return 0;
                 }
                 if (a.nombre < b.nombre) {
@@ -44,11 +60,12 @@ export const FormularioRegistro = () => {
         },[])
 
 
-    const registrar = (e) => {
+    const registrar = async (e) => {
         e.preventDefault()
+        crearNuevaCuenta()
         const db = getFirestore()
         const crearUsuario = collection(db, 'users')
-        addDoc(crearUsuario, formulario)
+        await addDoc(crearUsuario, formulario)
         .then(()=> setCuentaCreada(true))
     }
     
@@ -74,7 +91,7 @@ export const FormularioRegistro = () => {
                             <input type="text" id="nombre" name="nombre" required onChange={onChangeHandler} defaultValue={formulario.nombre}/>
                         
                             <label htmlFor="apellido">Apellido</label>
-                            <input type="text" id="nombre" name="apellido" required onChange={onChangeHandler} defaultValue={formulario.apellido}/>
+                            <input type="text" id="apellido" name="apellido" required onChange={onChangeHandler} defaultValue={formulario.apellido}/>
                         
                             <label htmlFor="email">E-Mail</label>
                             <input type="email" id="email" name="email" required onChange={onChangeHandler} defaultValue={formulario.email}/>

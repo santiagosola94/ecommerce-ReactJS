@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import NavBar from './components/NavBar/NavBar';
@@ -8,8 +8,6 @@ import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import { CartContextProvider } from './context/cartContext';
 import { Cart } from './components/Cart/Cart';
 import { FormularioRegistro } from './components/FormularioRegistro/FormularioRegistro';
-
-
 
 
 function App() {
