@@ -1,6 +1,10 @@
 .estilosContainer {
     background-color: rgba(127, 255, 212, 0.692);
-    padding: 10px;
+    background-image: url(https://i.ibb.co/1M0PzCC/abigail-keenan-8-s5-Qu-UBty-M-unsplash-1.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    padding: 5%;
 }
 
 .estilosItemDetail {

@@ -1,5 +1,5 @@
 import { Button } from 'react-bootstrap'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/cartContext'
 import '../ItemDetail/ItemDetail.css'
@@ -62,6 +62,7 @@ export const Cart = () => {
         modificarStock()
 
     }
+
 
     return (
         <div className="estilosBackgroundFondo">

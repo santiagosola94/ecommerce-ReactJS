@@ -1,18 +1,83 @@
-.formularioContenedor{
-    height:100vh;
-    background-image: url("https://i.ibb.co/vPjr9Rb/171500d7-2888-499c-bb67-bad4314be0cb.jpg");
+.estilosFondo{
+    background-image: url(https://i.ibb.co/vPjr9Rb/171500d7-2888-499c-bb67-bad4314be0cb.jpg);
     background-size: cover;
     background-attachment: fixed;
     background-position: center;
+    padding: 5% 0px;
+    height: 100vh;
+}
+
+.tituloFormulario{
+    background-color: #0d6efd;
+    padding: 10px;
+}
+.formularioContenedor{
+
+    margin: 0px 5%;
+}
+
+.divFlexContenedor{
+    display: flex;
+    flex-direction: row;
 }
 
 .formularioEstilos {
-    margin: 0px 10%;
-    display: flex ;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    background-color: rgba(0, 255, 255, 0.466);
-    width: 40vw;
+    padding: 20px;
+    margin: 0px;
+    width: 100%;
+
+
+    background-color: rgba(12, 12, 12, 0.816);
     text-align: center;
+    color: white;
+}
+
+.formularioEstilosItems{
+    background-color: #0d6efd;
+    padding: 5px;
+    margin: 10px;
+}
+
+.imagenForm{
+    height: auto;
+    width: 100%;
+    background-image: url(https://i.ibb.co/qyX5YxF/eduardo-cano-photo-co-Vvf-YHPi36y0-unsplash.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.test{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.testInput{
+    height:max-content;
+}
+
+.divAlerta{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: center;
+    background-color: rgba(255, 0, 106, 0.589);
+    margin: 10px;
+}
+
+.fondoCuentaCreada {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-items: center;
+    background-color: rgba(12, 12, 12, 0.816);
+    color: white;
+    margin: 10px;
+    padding: 10px;
+}
+
+.marginBoton {
+    margin: 10px;
 }

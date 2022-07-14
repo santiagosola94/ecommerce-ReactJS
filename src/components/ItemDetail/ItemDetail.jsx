@@ -24,7 +24,7 @@ const ItemDetail = ({detallesDelProducto}) => {
 
 
     return (
-        <Container className="estilosContainer">
+        <div className="estilosContainer">
             <Row className="estilosItemDetail">
                 <Col>
                     <img src={img} alt={nombre} className="imagenes"/>
@@ -53,7 +53,7 @@ const ItemDetail = ({detallesDelProducto}) => {
                     </div>
                 </Col>
             </Row>
-        </Container>
+        </div>
     )
 }
 

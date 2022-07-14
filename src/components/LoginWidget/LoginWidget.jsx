@@ -3,8 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket, faUser, faX, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import './loginWidget.css'
 
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
+import { Dropdown } from 'react-bootstrap'
 
 const LoginWidget = () => {
     const [loginClick, setLoginClick] = useState(false)
@@ -59,15 +60,12 @@ const LoginWidget = () => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
         if (user) {
-            const uid = user.uid;
-            console.log(uid)
-            console.log(user.email)
+            //const uid = user.uid;
             setUsuarioLoggeado(true)
             setNombreUsuarioConectado(user.email)
         } else {
             console.log('No hay nadie conectado')
             setUsuarioLoggeado(false)
-            //setGenerarh2(false)
         }
         });
     }
@@ -98,7 +96,15 @@ const LoginWidget = () => {
                 {usuarioLoggeado 
                     ? 
                         <>
-                            <h6>{nombreUsuarioConectado}</h6>
+                            <Dropdown>
+                                <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                    {nombreUsuarioConectado}
+                                </Dropdown.Toggle>
+
+                                <Dropdown.Menu>
+                                    <Dropdown.Item as={NavLink} to='/cuenta'>Mi cuenta</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
                             <div>
                                     <FontAwesomeIcon icon={faRightFromBracket} size='lg' inverse className="iconoLogIn" onClick={logout}/>
                                     <p className="estilosTextoLogin">Salir</p>
