@@ -4,8 +4,12 @@ Es indispensable que el sitio funcione correctamente y sea facilmente navegable.
 La idea es no llenar al usuario de informacion, sino que unicamente, reciba la informacion necesaria para poder navegar y comprar determinados productos.
 
 
-Lo que este proyecto tiene incorporado por ahora es: npm, react-bootstrap y react-router-dom.
-Cabe destacar que no he incluido otras dependencias que no hayamos visto en clase.
+Lo que este proyecto tiene incorporado es: 
+1) npm 
+2) react-bootstrap 
+3) react-router-dom 
+4) firebase: especificamente firestore y el auth de firebase. Este ultimo lo incorpore con el fin de que el usuario pueda registrarse en nuestra web y posteriormente loggearse, para poder comprar los productos. Es indispensable que el usuario se registre ya que no podra continuar con la compra.
+5) fontawesome : unicamente incorpore los iconos para el login, los alert y el cart.
 
 Gracias por leer. 
 Atte. Santiago Sola

@@ -23,7 +23,7 @@ function CartWidget() {
                     <FontAwesomeIcon icon={faCartShopping} size='lg' inverse className='iconoLogIn'/>            
                 </Link>
                 <p className="estilosTextoIconoCarrito">Carrito</p>
-                <span className="estilosCartWidgetCount">{MostrarCantidadCarrito() > 0 ? MostrarCantidadCarrito() : '' }</span>
+                <span className="estilosCartWidgetCount">{MostrarCantidadCarrito() > 0 && MostrarCantidadCarrito()}</span>
             </div>
         </div>
     )

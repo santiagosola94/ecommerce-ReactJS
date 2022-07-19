@@ -1,4 +1,4 @@
-import { faKey, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
+import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth'
 import { addDoc, collection, getFirestore } from 'firebase/firestore'
@@ -22,7 +22,6 @@ export const FormularioRegistro = () => {
         .then((userCredential) => {
             // Signed in
             const user = userCredential.user;
-            console.log('El usuario ha sido creado correctamente', user)
             setCuentaCreada(true)
             const formularioConID = {...formulario, uid: user.uid }
             const db = getFirestore()
@@ -31,8 +30,6 @@ export const FormularioRegistro = () => {
         })
         .catch((error) => {
             const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage)
             setCuentaCreada(false)
             setMensajeError(errorCode)
         });
@@ -66,7 +63,6 @@ export const FormularioRegistro = () => {
                 }
                 return 1;
             }))))
-            .finally(() =>console.log('provincias cargadas'))
             
         fetch('./localidades/localidadesActualizado.json')
             .then(resp => resp.json())
@@ -79,7 +75,6 @@ export const FormularioRegistro = () => {
                 }
                 return 1;
                 }))))
-            .finally(()=>console.log('localidades cargadas'))
         },[])
 
 

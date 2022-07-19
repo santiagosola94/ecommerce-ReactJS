@@ -24,13 +24,10 @@ export const CartContextProvider = ({ children }) =>{
     Por ultimo, aplicamos un splice, que borra el producto del array, y generamos un cambio de estado, provocando
     un nuevo render.*/
 
-    const eliminarProducto = (id, e)=>{
+    const eliminarProducto = (id)=>{
         const productoEncontrado = carrito.find((p)=> p.id === id )
-        console.log(productoEncontrado)
         const indiceProductoEncontrado = carrito.indexOf(productoEncontrado)
-        console.log(indiceProductoEncontrado)
         carrito.splice(indiceProductoEncontrado, 1)
-        console.log(carrito)
         setCarrito([...carrito])
     }
 
@@ -56,9 +53,8 @@ export const CartContextProvider = ({ children }) =>{
                 carrito[indiceProductoEncontrado].cantidad -= item.cantidad
                 setCarrito([...carrito])
                 alert('La cantidad ingresada supera el stock del producto. Ingrese otra cantidad o borre el item del carrito')
-                console.log(carrito)
-                }
-}
+            }
+    }
 
     return(
         <CartContext.Provider

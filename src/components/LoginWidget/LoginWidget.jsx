@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRightFromBracket, faUser, faX, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons'
 import './loginWidget.css'
-
 import { Link, NavLink } from 'react-router-dom'
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { Dropdown } from 'react-bootstrap'
@@ -37,8 +36,6 @@ const LoginWidget = () => {
 
     const onChangeManejador = (e) => {
         setUsuarioIngresado({ ...usuarioIngresado, [e.target.name]: e.target.value })
-        console.log(usuarioIngresado.email)
-        console.log(usuarioIngresado.contrasena)
     }
 
     const ingresarALaCuenta = (e) => {
@@ -46,17 +43,13 @@ const LoginWidget = () => {
         const auth = getAuth();
         signInWithEmailAndPassword(auth, usuarioIngresado.email, usuarioIngresado.contrasena)
         .then((userCredential) => {
-            // Signed in
             const user = userCredential.user;
-            console.log(user)
             verificarCambioDeEstado()
             traerDatosDeUsuario(user.email)
             setLoginClick(false)
         })
         .catch((error) => {
             const errorCode = error.code;
-            //const errorMessage = error.message;
-            console.log(errorCode)
             setErrorLogin(errorCode)
         });
     }
@@ -65,12 +58,10 @@ const LoginWidget = () => {
         const auth = getAuth();
         onAuthStateChanged(auth, (user) => {
         if (user) {
-            //const uid = user.uid;
             setUsuarioLoggeado(true)
             setNombreUsuarioConectado(user.email)
             traerDatosDeUsuario(user.email)
         } else {
-            console.log('No hay nadie conectado')
             setUsuarioLoggeado(false)
         }
         });
@@ -131,7 +122,7 @@ const LoginWidget = () => {
                         </div>
                 }
                 {loginClick &&
-                        <div className="contenedorLogin" /*onMouseLeave={cerrarLogin} */>
+                        <div className="contenedorLogin">
                             <FontAwesomeIcon icon={faX} size='lg' onClick={cerrarLogin} className='icono'/> 
 
                             <h3>Log In</h3>
@@ -143,11 +134,11 @@ const LoginWidget = () => {
                                 <button type="submit" id="botonLogIn" className="btn btn-primary my-2" >Log In</button> 
                             </form>
                             {errorLogin && 
-                                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
-                                    <FontAwesomeIcon icon={faTriangleExclamation} size="lg" style={{color: 'yellow'}}/>
-                                    <p style={{color: 'white', margin: '5px'}}>{manejadorDeErrores(errorLogin)}</p>
+                                <div className="divErrorLogIn">
+                                    <FontAwesomeIcon icon={faTriangleExclamation} size="lg" className="fondoAmarillo"/>
+                                    <p className="divErrorLogInP">{manejadorDeErrores(errorLogin)}</p>
                                 </div>}
-                            <p style={{color: 'white', margin: '0px', display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>No tenes una cuenta? </p>
+                            <p className="logInTexto">No tenes una cuenta? </p>
                             <Link onClick={cerrarLogin} to="/registro">Registrate</Link>
                         </div> 
                 }

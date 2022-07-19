@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Button } from 'react-bootstrap'
 
 function ItemCount(props) {
-    const {stock, valorInicial, nombreDelProducto, onAdd} = props
+    const {stock, valorInicial, onAdd} = props
     const [ count, modificarCont ] = useState(parseInt(valorInicial))
     function sumar() {
         if (count < stock) {

@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Col, Container, Row } from 'react-bootstrap'
+import { Col, Row } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { CartContext } from '../../context/cartContext'
 import ItemCount from '../ItemCount/ItemCount'
@@ -8,7 +8,7 @@ import './ItemDetail.css'
 
 
 const ItemDetail = ({detallesDelProducto}) => {
-    const {detalles, precio, img, stock, nombre, categoria} = detallesDelProducto
+    const {detalles, precio, img, stock, nombre} = detallesDelProducto
 
     const {addToCart} = useContext(CartContext)
 
