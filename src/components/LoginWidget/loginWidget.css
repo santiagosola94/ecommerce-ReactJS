@@ -82,3 +82,16 @@
 .fondoAmarillo{
     color: yellow;
 }
+
+.estilosDivIconoLogin {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.estilosDivIconoSalir {
+    color: white;
+    text-align: center;
+}

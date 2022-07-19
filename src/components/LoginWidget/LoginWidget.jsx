@@ -110,13 +110,13 @@ const LoginWidget = () => {
                                     <Dropdown.Item as={NavLink} to='/cuenta'>Mi cuenta</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
-                            <div>
+                            <div className="estilosDivIconoSalir">
                                     <FontAwesomeIcon icon={faRightFromBracket} size='lg' inverse className="iconoLogIn" onClick={logout}/>
                                     <p className="estilosTextoLogin">Salir</p>
                             </div>
                         </>
                     :
-                        <div>
+                        <div className="estilosDivIconoLogin">
                             <FontAwesomeIcon icon={faUser} size='lg' inverse onClick={mostrarLogin} className="iconoLogIn"/>
                             <p className="estilosTextoLogin">Login</p>
                         </div>
