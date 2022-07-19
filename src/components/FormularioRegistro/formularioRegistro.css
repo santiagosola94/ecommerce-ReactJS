@@ -4,7 +4,8 @@
     background-attachment: fixed;
     background-position: center;
     padding: 5% 0px;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
 }
 
 .tituloFormulario{

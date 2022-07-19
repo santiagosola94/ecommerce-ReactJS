@@ -1,6 +1,8 @@
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
 import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react'
+import { Table } from 'react-bootstrap';
+import './detalleCuenta.css'
 
 export const DetalleCuenta = () => {
     const [datosDeUsuario, setDatosDeUsuario] = useState('');
@@ -25,19 +27,32 @@ export const DetalleCuenta = () => {
     }, [])
 
     return (
-        <div className="contenedor">
+        <>
             {datosDeUsuario && 
-            <>
-                <h2>{datosDeUsuario.nombre}</h2>
-                <h2>{datosDeUsuario.apellido}</h2>
-                <h2>{datosDeUsuario.nombreDeUsuario}</h2>
-                <h2>{datosDeUsuario.dni}</h2>
-                <h2>{datosDeUsuario.uid}</h2>
-                <h2>{datosDeUsuario.provincia}</h2>
-                <h2>{datosDeUsuario.localidad}</h2>
-                <h2>{datosDeUsuario.direccion}</h2>
-                
-            </>}
-        </div>
+            <div className="contenedor">
+                <div className="estilosTituloDetalleCuenta">
+                    <h2>Datos de Usuario</h2>
+                </div>
+                <Table striped bordered hover className="estilosTabla" >
+                    <thead className="estilosTheadDetalleCuenta">
+                        <tr>
+                            <th>#</th>
+                            <th>Dato</th>
+                        </tr>
+                    </thead>
+
+                    <tbody className="estilosTbodyDetalleCuenta">
+                        <tr><th>Nombre</th><th>{datosDeUsuario.nombre}</th></tr>
+                        <tr><th>Apellido</th><th>{datosDeUsuario.apellido}</th></tr>
+                        <tr><th>Nombre de Usuario</th><th>{datosDeUsuario.nombreDeUsuario}</th></tr>
+                        <tr><th>DNI</th><th>{datosDeUsuario.dni}</th></tr>
+                        <tr><th>Id de Usuario</th><th>{datosDeUsuario.uid}</th></tr>
+                        <tr><th>Provincia</th><th>{datosDeUsuario.provincia}</th></tr>
+                        <tr><th>Localidad</th><th>{datosDeUsuario.localidad}</th></tr>
+                        <tr><th>Direccion</th><th>{datosDeUsuario.direccion}</th></tr>
+                    </tbody>
+                </Table>
+            </div>}
+        </>
     )
 }

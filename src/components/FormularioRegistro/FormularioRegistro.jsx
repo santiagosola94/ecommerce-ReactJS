@@ -11,7 +11,7 @@ import './formularioRegistro.css'
 export const FormularioRegistro = () => {
     const [provincias, setProvincias] = useState([])
     const [localidades, setLocalidades] = useState([])
-    const [cuentaCreada, setCuentaCreada] = useState(true)
+    const [cuentaCreada, setCuentaCreada] = useState(false)
     const [mensajeError, setMensajeError] = useState('')
 
     const [formulario, setFormulario] = useState({})

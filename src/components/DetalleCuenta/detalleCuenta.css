@@ -1,0 +1,35 @@
+.contenedor {
+    background-image: url(https://i.ibb.co/SfdSHhW/Principal-1.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: flex-start; 
+    align-items: center;
+    height: 100vh;
+}
+
+.estilosTabla {
+    width: 60%;
+    text-align: center;
+    margin: 1% 0px;
+}
+
+.estilosTheadDetalleCuenta {
+    background-color: rgb(66, 66, 66); 
+    color: white;
+}
+
+.estilosTbodyDetalleCuenta {
+    background-color: white;
+    color: black;
+}
+
+.estilosTituloDetalleCuenta{
+    background-color: rgba(3, 0, 0, 0.74);
+    width: 60%;
+    margin: 20px 0px;
+    color: white;
+    text-align: center;
+}

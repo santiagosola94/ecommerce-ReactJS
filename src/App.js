@@ -20,7 +20,7 @@ function App() {
           <Route path="/" element={<ItemListContainer greeting='Sportside Indumentaria Deportiva'/>}/>
           <Route path="/categoria/:categoria" element={<ItemListContainer greeting='Sportside Indumentaria Deportiva'/>}/>
           <Route path="/detalles/:id" element={<ItemDetailContainer/>}/>
-          <Route path="/carrito" element={<Cart/>}></Route>
+          <Route path="/carrito" element={<Cart/>} />
           <Route path="/registro" element={<FormularioRegistro />} />
           <Route path="/cuenta" element={<DetalleCuenta />} />
           <Route path="*" element={<Navigate to="/" />} />

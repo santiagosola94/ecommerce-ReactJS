@@ -1,4 +1,3 @@
-import { Row } from 'react-bootstrap'
 import Item from '../Item/Item'
 import './test.css'
 

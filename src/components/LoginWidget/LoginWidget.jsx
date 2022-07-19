@@ -6,8 +6,12 @@ import './loginWidget.css'
 import { Link, NavLink } from 'react-router-dom'
 import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth'
 import { Dropdown } from 'react-bootstrap'
+import { useContext } from 'react'
+import { CartContext } from '../../context/cartContext'
+import { collection, getDocs, getFirestore, query, where } from 'firebase/firestore'
 
 const LoginWidget = () => {
+    const {setCuentaConectada} = useContext(CartContext)
     const [loginClick, setLoginClick] = useState(false)
     const [usuarioIngresado, setUsuarioIngresado] = useState([])
 
@@ -46,6 +50,7 @@ const LoginWidget = () => {
             const user = userCredential.user;
             console.log(user)
             verificarCambioDeEstado()
+            traerDatosDeUsuario(user.email)
             setLoginClick(false)
         })
         .catch((error) => {
@@ -63,11 +68,20 @@ const LoginWidget = () => {
             //const uid = user.uid;
             setUsuarioLoggeado(true)
             setNombreUsuarioConectado(user.email)
+            traerDatosDeUsuario(user.email)
         } else {
             console.log('No hay nadie conectado')
             setUsuarioLoggeado(false)
         }
         });
+    }
+
+    async function traerDatosDeUsuario(email) {
+        const db = getFirestore()
+        const traerDatosDeUsuario = collection(db, 'users')
+        const queryInfoUsuario = query(traerDatosDeUsuario, where('email', '==', email))
+        await getDocs(queryInfoUsuario)
+        .then((resp)=> (resp.docs.forEach((item)=> setCuentaConectada(item.data()))))
     }
 
     const logout = ()=>{
@@ -126,7 +140,7 @@ const LoginWidget = () => {
                                 <input type="email" id='emailUsuarioIngresado' name="email" required onChange={onChangeManejador} />
                                 <label htmlFor="password">Contraseña</label>
                                 <input type="password" id='contrasenaUsuarioIngresado' name="contrasena" required  onChange={onChangeManejador}/>
-                                <button type="submit" id="botonLogIn" style={{margin: '10px 0px'}}>Log In</button> 
+                                <button type="submit" id="botonLogIn" className="btn btn-primary my-2" >Log In</button> 
                             </form>
                             {errorLogin && 
                                 <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
