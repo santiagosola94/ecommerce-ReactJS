@@ -40,7 +40,6 @@ export const Cart = () => {
             const total = determinarPrecioFinal()
     
             const ordenGenerada = {comprador, items, total}
-            console.log(ordenGenerada)
     
             crearOrden()
             modificarStock()
@@ -143,7 +142,7 @@ export const Cart = () => {
                         {carrito.map((item) => 
                             <tr key={item.id} className="colorLetra">
                                 <td className="widthTh">{carrito.indexOf(item)}</td>
-                                <td><img src={item.img} className="estilosImagen"></img></td>
+                                <td><img src={item.img} className="estilosImagen" alt={item.nombre}></img></td>
                                 <td>{item.nombre}</td>
                                 <td>{item.cantidad}</td>
                                 <td>${item.precio}</td>

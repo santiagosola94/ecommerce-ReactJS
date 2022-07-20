@@ -78,6 +78,7 @@ const LoginWidget = () => {
     const logout = ()=>{
         const auth = getAuth();
         signOut(auth)
+        setCuentaConectada(false)
     }
 
     const manejadorDeErrores = ( err ) => {
